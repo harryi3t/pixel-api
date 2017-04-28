@@ -6,5 +6,10 @@
   </head>
   <body>
     <h1>Upload Image to s3</h1>
+
+    <form action="/image" method="post" enctype="multipart/form-data">
+      <input type="file" name="selectedImage" /> <br/>
+      <button>Upload</button>
+    </form>
   </body>
 </html>
