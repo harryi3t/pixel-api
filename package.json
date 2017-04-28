@@ -1,0 +1,33 @@
+{
+  "name": "pixel-api",
+  "version": "1.0.0",
+  "description": "programming challenge for nestaway",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/harryi3t/pixel-api.git"
+  },
+  "keywords": [
+    "s3",
+    "aws",
+    "api",
+    "nestaway"
+  ],
+  "author": "Harendra Singh <66hari@gmail.com> (https://harryi3t.github.io)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/harryi3t/pixel-api/issues"
+  },
+  "homepage": "https://github.com/harryi3t/pixel-api#readme",
+  "dependencies": {
+    "express": "^4.15.2",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}
