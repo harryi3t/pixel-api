@@ -4,8 +4,9 @@ var awsCreds = {};
 var BUCKET_URL = 'https://s3-us-west-2.amazonaws.com/harryi3t/';
 
 try {
-  awsCreds = require('./aws.cred.js');
+  awsCreds = require('../aws.cred.js');
 } catch(e) {
+  console.log('failed to get aws.cred.js file. Trying for environment vars');
   awsCreds.accessKeyId = process.env.accessKeyId
   awsCreds.secretAccessKey = process.env.secretAccessKey
 }
