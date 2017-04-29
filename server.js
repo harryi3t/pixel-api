@@ -37,7 +37,8 @@ app.post('/image', function (req, res) {
     if (err)
       return res.send(err.message || err);
 
-    res.send('File uploaded successfully');
+    var newImageUrl = '/image/' + uniqueId;
+    res.redirect(newImageUrl);
   })
 });
 
