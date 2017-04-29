@@ -1,8 +1,11 @@
 var path = require('path');
 var fileUpload = require('express-fileupload');
 var express = require('express');
+var uuidV1 = require('uuid/v1');
+
 var adapter = require('./common/adapter.js')
 var s3 = require('./common/s3.js');
+
 
 var app = express();
 app.use(fileUpload());
@@ -24,10 +27,11 @@ app.post('/image', function (req, res) {
   if (!req.files.selectedImage)
     return res.send('No file selected');
 
+  var uniqueId = uuidV1();
   var imgObj = {
-    name: req.files.selectedImage.name,
+    name: uniqueId,
     data: req.files.selectedImage.data,
-    path: 'images/' + req.files.selectedImage.name
+    path: 'images/' + uniqueId
   }
   adapter.upload(imgObj, function (err) {
     if (err)
