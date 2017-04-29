@@ -1,11 +1,9 @@
-FROM node:7.9.0
+FROM harryi3t/node-forever:latest
 
 ADD . /home/harry/pixel-api
 
 RUN cd /home/harry/pixel-api && npm install
 RUN chmod +x /home/harry/pixel-api/boot.sh
-
-RUN npm install -g forever
 
 ENTRYPOINT ["/home/harry/pixel-api/boot.sh"]
 
