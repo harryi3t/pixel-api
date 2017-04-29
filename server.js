@@ -17,7 +17,8 @@ app.get('/image/:id', function (req, res) {
  console.log('get image ', req.params.id);
  console.log('browser details', req.browser);
 
- res.send('TODO: send the image from s3 API');
+ var imgTag = `<img src="${adapter.getImageUrl(req.params.id)}"></img>`;
+ res.send(imgTag);
 });
 
 app.post('/image', function (req, res) {

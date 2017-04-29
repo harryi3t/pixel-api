@@ -14,5 +14,7 @@ module.exports = {
         });
       });
     });
-  }
+  },
+
+  getImageUrl: s3.getImageUrl
 };

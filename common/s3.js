@@ -1,6 +1,7 @@
 var s3 = require('s3');
 var client = null;
 var awsCreds = {};
+var BUCKET_URL = 'https://s3-us-west-2.amazonaws.com/harryi3t/';
 
 try {
   awsCreds = require('./aws.cred.js');
@@ -56,5 +57,9 @@ module.exports = {
       console.log("done uploading");
       return cb();
     });
+  },
+
+  getImageUrl: function (name) {
+    return BUCKET_URL + name;
   }
 };
