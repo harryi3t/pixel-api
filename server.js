@@ -1,13 +1,16 @@
 var path = require('path');
 var fileUpload = require('express-fileupload');
 var express = require('express');
+var adapter = require('./common/adapter.js')
+var s3 = require('./common/s3.js');
 
 var app = express();
 app.use(fileUpload());
 app.use(detectBrowser);
+s3.init();
 
 app.get('/', function (req, res) {
- res.sendFile(__dirname + '/index.html');
+  res.sendFile(__dirname + '/index.html');
 });
 
 app.get('/image/:id', function (req, res) {
@@ -18,15 +21,24 @@ app.get('/image/:id', function (req, res) {
 });
 
 app.post('/image', function (req, res) {
-  if (!res.files.selectedImage)
+  if (!req.files.selectedImage)
     return res.send('No file selected');
 
-  var fileName = res.files.selectedImage.name;
-  var data = res.files.selectedImage.data;
+  var imgObj = {
+    name: req.files.selectedImage.name,
+    data: req.files.selectedImage.data,
+    path: 'images/' + req.files.selectedImage.name
+  }
+  adapter.upload(imgObj, function (err) {
+    if (err)
+      return res.send(err.message || err);
+
+    res.send('File uploaded successfully');
+  })
 });
 
 app.listen(3000, function () {
- console.log('Example app listening on port 3000!');
+  console.log('Example app listening on port 3000!');
 });
 
 function detectBrowser(req, res, next) {

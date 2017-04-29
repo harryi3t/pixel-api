@@ -25,9 +25,12 @@
   },
   "homepage": "https://github.com/harryi3t/pixel-api#readme",
   "dependencies": {
+    "base64-img": "^1.0.3",
     "express": "^4.15.2",
     "express-fileupload": "^0.1.2",
-    "path": "^0.12.7"
+    "fs": "0.0.1-security",
+    "path": "^0.12.7",
+    "s3": "^4.4.0"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"
