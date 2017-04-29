@@ -10,7 +10,7 @@ try {
   awsCreds.secretAccessKey = process.env.secretAccessKey
 }
 
-module.exports = {
+var s3Utilities = {
   init: function () {
     if (!client)
       client = s3.createClient({
@@ -63,3 +63,7 @@ module.exports = {
     return BUCKET_URL + name;
   }
 };
+
+module.exports = s3Utilities;
+
+s3Utilities.init();

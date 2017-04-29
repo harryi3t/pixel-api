@@ -7,7 +7,6 @@ var s3 = require('./common/s3.js');
 var app = express();
 app.use(fileUpload());
 app.use(detectBrowser);
-s3.init();
 
 app.get('/', function (req, res) {
   res.sendFile(__dirname + '/index.html');
